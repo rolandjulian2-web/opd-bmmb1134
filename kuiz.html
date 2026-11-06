@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kuiz Interaktif</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(135deg,#071329,#172554,#4c1d95);color:white;line-height:1.7}.container{max-width:850px;margin:auto;padding:30px 20px}.card{background:#ffffff12;border:1px solid #ffffff30;border-radius:16px;padding:22px;margin:20px 0}h1{font-size:34px}h2{color:#c4b5fd}.option{display:block;background:#ffffff15;padding:12px;margin:9px 0;border-radius:9px;cursor:pointer}.option:hover{background:#ffffff30}button,a{display:inline-block;padding:12px 20px;margin:8px 5px 8px 0;background:#7c3aed;color:white;text-decoration:none;border:0;border-radius:9px;cursor:pointer;font-size:15px}button:hover,a:hover{background:#6d28d9}#result{font-size:20px;font-weight:bold;margin-top:20px}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>AKTIVITI DAN KUIZ INTERAKTIF</h1>
+<p>Uji kefahaman anda tentang halangan dan isu dalam komunikasi.</p>
+
+<form id="quiz">
+
+<div class="card">
+<h2>Soalan 1</h2>
+<p>Apakah maksud komunikasi sehala?</p>
+<label class="option"><input type="radio" name="q1" value="a"> Komunikasi yang melibatkan maklum balas dua pihak</label>
+<label class="option"><input type="radio" name="q1" value="b"> Penyampaian maklumat tanpa peluang maklum balas daripada penerima</label>
+<label class="option"><input type="radio" name="q1" value="c"> Perbincangan secara berkumpulan</label>
+<label class="option"><input type="radio" name="q1" value="d"> Komunikasi melalui bahasa isyarat sahaja</label>
+</div>
+
+<div class="card">
+<h2>Soalan 2</h2>
+<p>Antara berikut, yang manakah contoh gangguan luaran?</p>
+<label class="option"><input type="radio" name="q2" value="a"> Perasaan sedih</label>
+<label class="option"><input type="radio" name="q2" value="b"> Masalah pendengaran</label>
+<label class="option"><input type="radio" name="q2" value="c"> Bunyi bising daripada kenderaan</label>
+<label class="option"><input type="radio" name="q2" value="d"> Kurang keyakinan diri</label>
+</div>
+
+<div class="card">
+<h2>Soalan 3</h2>
+<p>Apakah tindakan yang sesuai sebelum berkongsi sesuatu berita di media sosial?</p>
+<label class="option"><input type="radio" name="q3" value="a"> Terus berkongsi berita tersebut</label>
+<label class="option"><input type="radio" name="q3" value="b"> Menyemak kesahihan maklumat</label>
+<label class="option"><input type="radio" name="q3" value="c"> Mengubah kandungan berita</label>
+<label class="option"><input type="radio" name="q3" value="d"> Menghantar kepada semua kenalan</label>
+</div>
+
+<div class="card">
+<h2>Soalan 4</h2>
+<p>Apakah kesan buli siber terhadap seseorang?</p>
+<label class="option"><input type="radio" name="q4" value="a"> Meningkatkan keyakinan diri</label>
+<label class="option"><input type="radio" name="q4" value="b"> Menggalakkan kerjasama</label>
+<label class="option"><input type="radio" name="q4" value="c"> Menjejaskan emosi dan kesejahteraan diri</label>
+<label class="option"><input type="radio" name="q4" value="d"> Meningkatkan kemahiran membaca</label>
+</div>
+
+<div class="card">
+<h2>Soalan 5</h2>
+<p>Antara berikut, yang manakah peranan pendidik untuk meningkatkan komunikasi kanak-kanak?</p>
+<label class="option"><input type="radio" name="q5" value="a"> Menghalang kanak-kanak daripada bercakap</label>
+<label class="option"><input type="radio" name="q5" value="b"> Memberikan peluang untuk bercerita dan bersoal jawab</label>
+<label class="option"><input type="radio" name="q5" value="c"> Mengabaikan pertanyaan kanak-kanak</label>
+<label class="option"><input type="radio" name="q5" value="d"> Menggalakkan komunikasi sehala sahaja</label>
+</div>
+
+<button type="button" onclick="checkAnswers()">Hantar Jawapan</button>
+<button type="reset" onclick="resetResult()">Cuba Semula</button>
+</form>
+
+<div id="result"></div>
+<a href="langkah.html">← Sebelumnya</a>
+<a href="rumusan.html">Seterusnya →</a>
+</div>
+
+<script>
+function checkAnswers(){
+const answers={q1:"b",q2:"c",q3:"b",q4:"c",q5:"b"};
+let score=0;
+let total=Object.keys(answers).length;
+for(let q in answers){
+let selected=document.querySelector('input[name="'+q+'"]:checked');
+if(selected && selected.value===answers[q]) score++;
+}
+let message="";
+if(score===5){message="Cemerlang! Anda menguasai topik ini.";}
+else if(score>=3){message="Bagus! Teruskan usaha untuk meningkatkan kefahaman.";}
+else{message="Jangan berputus asa. Ulang kaji kandungan dan cuba lagi.";}
+document.getElementById("result").innerHTML=
+"Markah anda: "+score+" / "+total+"<br>"+message;
+}
+function resetResult(){
+document.getElementById("result").innerHTML="";
+}
+</script>
+</body>
+</html>
